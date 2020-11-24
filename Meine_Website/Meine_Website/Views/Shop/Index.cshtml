@@ -1,0 +1,84 @@
+﻿@using Meine_Website.Models
+@model List<Article>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if ((Model == null) || (Model.Count == 0))
+{
+    <p>
+        Es sind keine Artikel im Shop vorhanden!
+    </p>
+}
+else
+{
+    // alle Artike in Tabellenform ausgeben
+    <table>
+        <thead>
+            <tr>
+                <td colspan="5">Shopartikel</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Artikel-ID</td>
+                <td>Artikelname</td>
+                <td>Artikelbeschreibung</td>
+
+                <td>Preis</td>
+            </tr>
+            @foreach (Article a in Model)
+            {
+                <tr>
+                    <td>@a.ArticleId</td>
+                    <td>@a.Articlename</td>
+                    <td>@a.Description</td>
+
+                    <td>@a.Price</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">alle Artikel unseres Shops</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <br />
+
+    <br />
+
+    <br />
+
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+}
