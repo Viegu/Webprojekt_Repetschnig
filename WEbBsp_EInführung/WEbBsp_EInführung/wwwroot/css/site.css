@@ -1,108 +1,71 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-/*
-*{
-    border: 1px solid black;
-}
-    */
 
-#container{
-    width: 80%;
-    min-width:800px;
-    margin: 0px auto;
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
 }
 
-header{
-    height: 200px;
-    border-bottom: 1px solid #934a0a;
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
 }
 
-main{
-
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
-nav{
-    width: 15%;
-    min-width: 150px;
-    float: left;
-    min-height: 500px;
-    
-    
-}
-nav ul{
-    list-style-type: none;
-    padding: 10px 0px 0px 10px;
-}
-footer ul {
-    list-style-type: none;
-    padding: 0px;
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
-nav a:hover{
-    text-decoration:none;
-    font-weight:bold;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
 }
-content {
-    width: 65%;
-    min-width: 450px;
-    float: left;
-    min-height: 500px;
-    border-left: 1px solid #934a0a;
-    border-right: 1px solid #934a0a;
-    padding: 20px 10px 10px 10px;
-}
-aside {
-    width: 20%;
-    min-width: 200px;
-    float: right;
-    min-height: 500px;
-}
-footer {
-    min-width: 40px;
-    clear: both;
-    border-top: 1px solid #934a0a;
-    padding-top: 10px;
-    text-align: right;
-}
-footer a:hover {
-    text-decoration: none;
-    font-weight: bold;
-}
-    footer a {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-
-.level1{
-
-}
-.level2{
-    font-size: 85%;
-    padding-left: 15px;
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
-/*Alle Tabellen einheitlich formatieren*/
-table {
-    border: 1px solid black;
-   
+.border-top {
+  border-top: 1px solid #e5e5e5;
 }
-table td{
-    padding: 5px;
-}
-thead{
-   text-align: center;
-   line-height:200%;
-   font-weight: bold;
-   background-color: #4cff00;
-}
-tfoot{
-    font-size:80%;
-    text-align:right;
-    line-height:200%;  
-    
-}
-tfoot tr td{
-    padding-top:5px;
-    padding-right: 10px;
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
 }
 
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
