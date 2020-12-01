@@ -1,0 +1,68 @@
+﻿@model Meine_Website.Models.Account
+@{
+    ViewData["Title"] = "Free";
+}
+
+<h1>Sie haben sichn für die Gratis-Version entschieden</h1>
+
+<p>Nun müssen Sie sich lediglich einen Account erstellen</p>
+
+
+<form asp-controller="user" asp-action="Free" method="post">
+
+
+
+    <label asp-for="Vorname">Vorname *</label>
+    <br />
+    <input asp-for="Vorname" />
+    <br />
+    <span asp-validation-for="Vorname" class="text-danger" style="font-size: 85%"></span>
+    <br />
+
+    <label asp-for="Nachname">Nachname *</label>
+    <br />
+    <input asp-for="Nachname" />
+    <br />
+    <span asp-validation-for="Nachname" class="text-danger" style="font-size: 85%"></span>
+    <br />
+
+
+    <label asp-for="Email">Email *</label>
+    <br />
+    <input asp-for="Email" />
+    <br />
+    <span asp-validation-for="Email" class="text-danger" style="font-size: 85%"></span>
+    <br />
+
+
+    <label asp-for="Passwort">Passwort *</label>
+    <br />
+    <input asp-for="Passwort" />
+    <br />
+    <span asp-validation-for="Passwort" class="text-danger" style="font-size: 85%"></span>
+    <br />
+
+
+    <label asp-for="Passwort1">Passwort bestätigen *</label>
+    <br />
+    <input asp-for="Passwort1" />
+    <br />
+    <span asp-validation-for="Passwort1" class="text-danger" style="font-size: 85%"></span>
+    <br />
+
+    <span asp-validation-for="Geschlecht" class="text-danger" style="font-size: 85%"></span>
+    <br />
+    <label asp-for="Geschlecht">Geschlecht *</label>
+    <br />
+    <select asp-for="Geschlecht">
+        <option value="notSpecified">bitte auswählen</option>
+        <option value="maennlich">Männlich</option>
+        <option value="weiblich">Weiblich</option>
+
+    </select>
+    <br />
+
+    <input type="submit" value="Artikel erzeugen" />
+    <input type="reset" value="abbrechen" />
+</form>
+

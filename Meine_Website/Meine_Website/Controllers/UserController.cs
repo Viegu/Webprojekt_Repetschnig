@@ -12,5 +12,25 @@ namespace Meine_Website.Controllers
         {
             return View();
         }
+
+        public IActionResult MyAccount()
+        {
+            return View();
+        }
+
+        public IActionResult Free()
+        {
+            return View();
+        }
+
+        public IActionResult Standard()
+        {
+            return View();
+        }
+
+        public IActionResult Premium()
+        {
+            return View();
+        }
     }
 }
