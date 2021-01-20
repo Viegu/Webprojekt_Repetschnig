@@ -31,7 +31,7 @@ namespace Meine_Website.Controllers
             return View();
         }
 
-        public IActionResult GettingStarted()
+        public IActionResult Register()
         {
             return View();
         }

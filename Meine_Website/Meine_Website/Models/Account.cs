@@ -3,45 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Meine_Website.Models
-{
+namespace Meine_Website.Models {
+    public class Account {
+
+        public int AccountID { get; set; }
+        public String Vorname { get; set; }
+        public String Nachname { get; set; }
+        public String Nickname { get; set; }
+        public String Email { get; set; }
+        public String Passwort { get; set; }
+        public DateTime? BirthDay { get; set; }
+        public bool isModerator { get; set; }
 
 
-    public enum Geschlecht
-    {
-        maennlich,weiblich,nichtAngegeben
-    }
-    public class Account
-    {
-        public string Email { get; set; }
-
-        public string Vorname { get; set; }
-
-        public string Nachname { get; set; }
-
-        public string Username { get; set; }
-        public string Passwort { get; set; }
-
-        public string Passwort1 { get; set; }
-        public Geschlecht Geschlecht { get; set; }
 
 
-        public Account() : this("","","","","","",Geschlecht.nichtAngegeben) { }
-        public Account(string email, string vorname, string nachname, string username, string passwort, string passwort1, Geschlecht geschlecht)
-        {
-            this.Email = email;
-            this.Vorname = vorname;
-            this.Nachname = nachname;
-            this.Username = username;
-            this.Passwort = passwort;
-            this.Passwort1 = passwort1;
-            this.Geschlecht = geschlecht;
+        public Account() : this(0, "", "", "", "", "", null, false) { }
+
+        public Account(int id, String vn, String nn, String nickn, String mail, String pw, DateTime? bday,bool isMod) {
+            this.AccountID = id;
+            this.Vorname = vn;
+            this.Nachname = nn;
+            this.Nickname = nickn;
+            this.Email = mail;
+            this.Passwort = pw;
+            this.BirthDay = bday;
+            this.isModerator = isMod;
         }
 
-        public override string ToString()
-        {
-            return this.Username + " " + this.Vorname + " " + this.Nachname + " "+ this.Geschlecht;
-        }
+        public override string ToString() {
+            return this.AccountID + " " + this.Vorname + " " + this.Nachname + " " + this.Nickname;        }
+
 
     }
 }
