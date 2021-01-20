@@ -7,32 +7,33 @@ namespace Meine_Website.Models {
     public class Account {
 
         public int AccountID { get; set; }
-        public String Vorname { get; set; }
-        public String Nachname { get; set; }
-        public String Nickname { get; set; }
-        public String Email { get; set; }
-        public String Passwort { get; set; }
-        public DateTime? BirthDay { get; set; }
-        public bool isModerator { get; set; }
+        public string Vorname { get; set; }
+        public string Nachname { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Passwort { get; set; }
+        public DateTime? Geburtsdatum { get; set; }
+        public bool istModerator { get; set; }
 
 
 
 
         public Account() : this(0, "", "", "", "", "", null, false) { }
 
-        public Account(int id, String vn, String nn, String nickn, String mail, String pw, DateTime? bday,bool isMod) {
+        public Account(int id, string vn, string nn, string un, string mail, string pw, DateTime? bday,bool isMod) {
             this.AccountID = id;
             this.Vorname = vn;
             this.Nachname = nn;
-            this.Nickname = nickn;
+            this.Username = un;
             this.Email = mail;
             this.Passwort = pw;
-            this.BirthDay = bday;
-            this.isModerator = isMod;
+            this.Geburtsdatum = bday;
+            this.istModerator = isMod;
         }
 
         public override string ToString() {
-            return this.AccountID + " " + this.Vorname + " " + this.Nachname + " " + this.Nickname;        }
+            return this.AccountID + " " + this.Vorname + " " + this.Nachname + " " + this.Username;     
+        }
 
 
     }
