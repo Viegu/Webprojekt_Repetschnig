@@ -1,0 +1,44 @@
+﻿@using Meine_Website.Models
+@model List<Account>
+@{
+    ViewData["Title"] = "RegisteredAccounts";
+}
+@if ((Model == null || Model.Count == 0)) {
+    <p> Es wurden noch keine Accounts registriert </p>
+} else {
+
+<table>
+    <thead>
+        <tr>
+            <td>registrierte Accounts</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>Account-ID</td>
+            <td>Vorname</td>
+            <td>Nachname</td>
+            <td>Email</td>
+            <td>Passwort</td>
+            <td>Geburtsdatum</td>
+            <td>Ist Moderator</td>
+        </tr>
+        @foreach(Account a in Model) {
+    <tr>
+        <td>@a.AccountID</td>
+        <td>@a.Vorname</td>
+        <td>@a.Nachname</td>
+        <td>@a.Email</td>
+        <td>@a.Passwort</td>
+        <td>@a.Geburtsdatum.Value.ToShortDateString()</td>
+        <td>@a.istModerator.ToString()</td>
+
+
+    </tr>
+        }
+
+    </tbody>
+</table>
+
+}

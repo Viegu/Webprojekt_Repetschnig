@@ -52,7 +52,7 @@ namespace Meine_Website.Models.db {
                             Username = Convert.ToString(reader["username"]),
                             Email = Convert.ToString(reader["email"]),
                             Passwort = Convert.ToString(reader["passwort"]),
-                            Geburtsdatum = reader["geburtsdatum"] == DBNull.Value ? Convert.ToDateTime(null) : Convert.ToDateTime(reader["releasedate"]),
+                            Geburtsdatum = reader["geburtsdatum"] == DBNull.Value ? Convert.ToDateTime(null) : Convert.ToDateTime(reader["geburtsdatum"]),
                             istModerator = Convert.ToBoolean(reader["istModerator"])
 
                         });
@@ -97,7 +97,7 @@ namespace Meine_Website.Models.db {
             paramVorname.Value = account.Vorname;
 
             DbParameter paramNachname = cmdInsert.CreateParameter();
-            paramNachname.ParameterName = "vorname";
+            paramNachname.ParameterName = "nachname";
             paramNachname.DbType = DbType.String;
             paramNachname.Value = account.Nachname;
 
