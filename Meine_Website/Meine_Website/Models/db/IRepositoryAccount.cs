@@ -17,7 +17,7 @@ namespace Meine_Website.Models.db {
 
         bool Insert(Account account);
         bool Delete(int Account_ID);
-        bool Update(int Account_ID,Account newAccountData );
+
 
     }
 }

@@ -14,6 +14,7 @@ create table accounts(
     constraint account_id_PK primary key(account_id)
 )engine=InnoDb;
 
-insert into accounts values(0,"Manuel","Repetschnig","admin","repetschnigmanuel@gmail.com","admin","2003-03-12",true);
-insert into accounts values(1,"Niklas","SChneider","Fridoulin","Schneidli@gmail.com","123321","2003-03-12",false);
+insert into accounts values(null,"Manuel","Repetschnig","admin","repetschnigmanuel@gmail.com","admin","2003-03-12",true);
+insert into accounts values(null,"Niklas","Schneider","Fridoulin","niklasschneider3007@gmail.com","123321","2002-07-30",false);
 select * from accounts;
+

@@ -16,6 +16,14 @@ namespace Meine_Website.Controllers {
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Register() {
+            return View(new Account());
+
+        }
+
+
+            [HttpPost]
         public IActionResult Register(Account neuerAccount) {
             if(neuerAccount == null) {
                 return View(new Account());

@@ -78,19 +78,14 @@ namespace Meine_Website.Models.db {
                 return false;
             }
 
-            // ein leeres SQL-Command
+           
             DbCommand cmdInsert = this._conn.CreateCommand();
 
-            // SQL-Command (INSERT ... ) erzeugen
-            //      alle Daten von außerhalb (z.B. von einem Formular) sollten als Parameter
-            //      übergeben werden (Parameter beginnen mit @)
-            //  => SQL-Injections werden somit verhindert
-            //  SQL-Injection: hierbei wird versucht, SQL-Code (z.B.: DELETE from ) in z.B. ein 
-            // Eingabefeld eines WEB-formulars einzugeben und damit ausführen zu lassen
+          
 
             cmdInsert.CommandText = "insert into accounts values(null, @vorname, @nachname, @username, @email, @passwort, @geburtsdatum, @istModerator);";
 
-            // leeren Parameter erzeugen
+           
             DbParameter paramVorname = cmdInsert.CreateParameter();
             paramVorname.ParameterName = "vorname";
             paramVorname.DbType = DbType.String;
@@ -161,8 +156,6 @@ namespace Meine_Website.Models.db {
             }
         }
 
-        public bool Update(int Account_ID, Account newAccountData) {
-            throw new NotImplementedException();
-        }
+       
     }
 }

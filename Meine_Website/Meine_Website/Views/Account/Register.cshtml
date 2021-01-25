@@ -7,24 +7,26 @@
     <input asp-for="Vorname" /><br />
     <span asp-validation-for="Vorname" class="text-danger" style="font-size: 85%"></span> <br />
 
-    <label asp-for="Nachname"> Vorname </label> <br />
+    <label asp-for="Nachname"> Nachname </label> <br />
     <input asp-for="Nachname" /><br />
     <span asp-validation-for="Nachname" class="text-danger" style="font-size: 85%"></span> <br />
-
-    <label asp-for="Email"> EMail </label> <br />
-    <input asp-for="Email" /><br />
-    <span asp-validation-for="Email" class="text-danger" style="font-size: 85%"></span> <br />
-
 
     <label asp-for="Username"> Username </label> <br />
     <input asp-for="Username" /><br />
     <span asp-validation-for="Username" class="text-danger" style="font-size: 85%"></span> <br />
 
+    <label asp-for="Email"> Email </label> <br />
+    <input asp-for="Email" /><br />
+    <span asp-validation-for="Email" class="text-danger" style="font-size: 85%"></span> <br />
+
+    <label asp-for="Geburtsdatum">Geburtstag</label><br />
+    <input asp-for="Geburtsdatum" type="date" /> <br />
+
     <label asp-for="Passwort"> Passwort </label> <br />
     <input asp-for="Passwort" /><br />
     <span asp-validation-for="Passwort" class="text-danger" style="font-size: 85%"></span> <br />
 
-    
+
     <input type="submit" value="Account erstellen" />
     <input type="reset" value="Abbrechen" />
 </form>
