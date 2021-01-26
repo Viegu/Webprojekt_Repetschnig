@@ -17,6 +17,7 @@
 
         <tr>
             <td>Account-ID</td>
+            <td>Username</td>
             <td>Vorname</td>
             <td>Nachname</td>
             <td>Email</td>
@@ -27,6 +28,7 @@
         @foreach(Account a in Model) {
     <tr>
         <td>@a.AccountID</td>
+        <td>@a.Username</td>
         <td>@a.Vorname</td>
         <td>@a.Nachname</td>
         <td>@a.Email</td>

@@ -240,7 +240,7 @@ namespace Meine_Website.Models.db {
 
         public  bool IsLoginCorrect(String inputUsername, String inputPasswort) {
             bool usernamecorrect = false;
-            bool pwcorrect = false;
+           
           
 
             if (this._conn.State == ConnectionState.Open) {
@@ -265,11 +265,15 @@ namespace Meine_Website.Models.db {
                 }
                 for(int i =0; i<usernames.Count;i++) {
                     if (inputUsername.Equals(usernames[i])) {
-                        if (inputPasswort.Equals(User[inputUsername])) ;
+                        if (inputPasswort.Equals(User[inputUsername])) {
+                            usernamecorrect = true;
+                        }
                     }
                 }
+                return usernamecorrect;
                 
             }
+            throw new Exception("Datebank: Verbindung ist nicht geöffnet!");
 
         }
 
