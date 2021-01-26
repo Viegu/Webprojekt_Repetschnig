@@ -98,5 +98,12 @@ namespace Meine_Website.Controllers {
                 ModelState.AddModelError(nameof(Account.Geburtsdatum), "Geburtsdatum muss angegeben werden!");
             }
         }
+
+        public IActionResult Login() {
+            return View();
+        }
+
+
+
     }
 }

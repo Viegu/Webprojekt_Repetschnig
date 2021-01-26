@@ -156,6 +156,124 @@ namespace Meine_Website.Models.db {
             }
         }
 
-       
+        public bool IsUsernameTaken(String imputUsername) {
+            bool vergeben = false;
+
+            if (this._conn.State == ConnectionState.Open) {
+                
+
+               
+                DbCommand cmdSelect = this._conn.CreateCommand();
+
+                cmdSelect.CommandText = "select username from accounts";
+                List<String> usernames = new List<string>();
+                using (DbDataReader reader = cmdSelect.ExecuteReader()) {
+                    
+                    while (reader.Read()) {
+
+
+                        usernames.Add(Convert.ToString(reader["username"]));  
+                    }
+
+
+                }
+
+                for(int i = 0; i < usernames.Count; i++) {
+                    if (imputUsername.Equals(usernames[i])){
+                        vergeben = true;
+                    }
+                       
+                    
+                    
+                }
+                
+                if(vergeben == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            throw new Exception("Datebank: Verbindung ist nicht geöffnet!");
+        }
+
+        public bool IsEmailTaken(String imputEmail) {
+            bool vergeben = false;
+
+            if (this._conn.State == ConnectionState.Open) {
+                
+
+               
+                DbCommand cmdSelect = this._conn.CreateCommand();
+
+                cmdSelect.CommandText = "select email from accounts";
+                List<String> emails = new List<string>();
+                using (DbDataReader reader = cmdSelect.ExecuteReader()) {
+
+                    while (reader.Read()) {
+
+
+                        emails.Add(Convert.ToString(reader["email"]));
+                    }
+
+
+                }
+
+                for (int i = 0; i < emails.Count; i++) {
+                    if (imputEmail.Equals(emails[i])){
+                        vergeben = true;
+                    }
+
+
+
+                }
+
+                if (vergeben == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            throw new Exception("Datebank: Verbindung ist nicht geöffnet!");
+        }
+
+        public  bool IsLoginCorrect(String inputUsername, String inputPasswort) {
+            bool usernamecorrect = false;
+            bool pwcorrect = false;
+          
+
+            if (this._conn.State == ConnectionState.Open) {
+                List<String> usernames = new List<String>();
+
+               
+                DbCommand cmdSelect = this._conn.CreateCommand();
+
+                cmdSelect.CommandText = "select username,passwort from accounts";
+                Dictionary<String, String> User = new Dictionary<string, string>();
+                using (DbDataReader reader = cmdSelect.ExecuteReader()) {
+
+                    while (reader.Read()) {
+
+
+                        User.Add(Convert.ToString(reader["username"]), Convert.ToString(reader["passwort"]));
+                        usernames.Add(Convert.ToString(reader["username"]));
+
+                    }
+
+
+                }
+                for(int i =0; i<usernames.Count;i++) {
+                    if (inputUsername.Equals(usernames[i])) {
+                        if (inputPasswort.Equals(User[inputUsername])) ;
+                    }
+                }
+                
+            }
+
+        }
+
+
+
     }
 }
