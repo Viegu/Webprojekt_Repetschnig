@@ -14,13 +14,14 @@ namespace Meine_Website.Models {
         public string Passwort { get; set; }
         public DateTime? Geburtsdatum { get; set; }
         public bool istModerator { get; set; }
+        public string Passwort2 { get; set; }
 
 
 
 
-        public Account() : this(0, "", "", "", "", "", null, false) { }
+        public Account() : this(0, "", "", "", "", "", null, false,"") { }
 
-        public Account(int id, string vn, string nn, string un, string mail, string pw, DateTime? bday,bool isMod) {
+        public Account(int id, string vn, string nn, string un, string mail, string pw, DateTime? bday,bool isMod, string pw2) {
             this.AccountID = id;
             this.Vorname = vn;
             this.Nachname = nn;
@@ -29,6 +30,8 @@ namespace Meine_Website.Models {
             this.Passwort = pw;
             this.Geburtsdatum = bday;
             this.istModerator = isMod;
+            this.Passwort2 = pw2;
+
         }
 
         public override string ToString() {

@@ -1,30 +1,38 @@
 ﻿@model Meine_Website.Models.Account
 @{
     ViewData["Title"] = "Register";
+
 }
+
+
 <form asp-controller="account" asp-action="Register" method="post">
     <label asp-for="Vorname"> Vorname </label> <br />
-    <input asp-for="Vorname" /><br />
+    <input type="text"asp-for="Vorname" /><br />
     <span asp-validation-for="Vorname" class="text-danger" style="font-size: 85%"></span> <br />
 
     <label asp-for="Nachname"> Nachname </label> <br />
-    <input asp-for="Nachname" /><br />
+    <input type="text"asp-for="Nachname" /><br />
     <span asp-validation-for="Nachname" class="text-danger" style="font-size: 85%"></span> <br />
 
     <label asp-for="Username"> Username </label> <br />
-    <input asp-for="Username" /><br />
+    <input type="text"asp-for="Username"  /><br />
     <span asp-validation-for="Username" class="text-danger" style="font-size: 85%"></span> <br />
 
     <label asp-for="Email"> Email </label> <br />
-    <input asp-for="Email" /><br />
+    <input type="text"asp-for="Email" /><br />
     <span asp-validation-for="Email" class="text-danger" style="font-size: 85%"></span> <br />
 
     <label asp-for="Geburtsdatum">Geburtstag</label><br />
     <input asp-for="Geburtsdatum" type="date" /> <br />
 
     <label asp-for="Passwort"> Passwort </label> <br />
-    <input asp-for="Passwort" /><br />
+    <input type="password"asp-for="Passwort" /><br />
     <span asp-validation-for="Passwort" class="text-danger" style="font-size: 85%"></span> <br />
+
+
+    <label asp-for="Passwort2"> Passwort bestätigen </label> <br />
+    <input type="password"asp-for="Passwort2" /><br />
+    <span asp-validation-for="Passwort2" class="text-danger" style="font-size: 85%"></span> <br />
 
 
     <input type="submit" value="Account erstellen" />

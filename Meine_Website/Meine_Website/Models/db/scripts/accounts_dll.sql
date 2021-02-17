@@ -18,3 +18,4 @@ insert into accounts values(null,"Manuel","Repetschnig","admin","repetschnigmanu
 insert into accounts values(null,"Niklas","Schneider","Fridoulin","niklasschneider3007@gmail.com","123321","2002-07-30",false);
 select * from accounts;
 
+

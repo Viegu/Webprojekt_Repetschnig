@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 using Meine_Website.Models;
 using Meine_Website.Models.db;
 using System.Data.Common;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Meine_Website.Controllers {
     public class AccountController : Controller {
+        MySqlConnection conn = new MySqlConnection();
+        MySqlCommand cmd = new MySqlCommand();
+        MySqlDataReader dr;
 
 
         IRepositoryAccount rep = new RepositoryAccount();
@@ -68,18 +73,36 @@ namespace Meine_Website.Controllers {
         }
 
         private void ValidateAccountData(Account account) {
+            ConnectionString();
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from Accounts where username='" + account.Username+"'";
 
             if (account == null) {
-                return;
+               
             }
             if (account.Username.Length < 3) {
                 ModelState.AddModelError(nameof(Account.Username), "Der Username muss mind 3 Zeichen lang sein");
 
             }
+            dr = cmd.ExecuteReader();
+            if (dr.Read()) {
+                ModelState.AddModelError(nameof(Account.Username), "Der Username existiert bereits!");
+              
+
+            } else {
+                
+                
+            }
+
+            if (account.Passwort != account.Passwort2) {
+                ModelState.AddModelError(nameof(Account.Passwort), "Die Passswörter stimmen nicht überein!");
+            }
+
 
             //if Username schon existiert
 
-            if(account.Vorname == null || account.Vorname == "") {
+            if (account.Vorname == null || account.Vorname == "") {
                 ModelState.AddModelError(nameof(Account.Vorname), "Der Vorname muss angegeben werden!");
             }
 
@@ -90,17 +113,48 @@ namespace Meine_Website.Controllers {
             if (!account.Email.Contains("@")||account.Email.Length<5) {
                 ModelState.AddModelError(nameof(Account.Email), "Diese Email stimmt nicht!");
             }
+            if (account.Passwort == null || account.Passwort2 == "") {
+                ModelState.AddModelError(nameof(Account.Vorname), "Das Passwort muss angegeben werden!");
+            }
 
 
-            //PW wird ausgelassen kommt später noch
 
-            if(account.Geburtsdatum== null) {
+            if (account.Geburtsdatum== null) {
                 ModelState.AddModelError(nameof(Account.Geburtsdatum), "Geburtsdatum muss angegeben werden!");
             }
         }
 
+
+
+        //Login
+        [HttpGet]
         public IActionResult Login() {
-            return View();
+            return View(new Login());
+        }
+
+        [HttpPost]
+        void ConnectionString() {
+              conn.ConnectionString = "server=localhost;database=db_accounts;user=root;pwd=ABC13Y@12Bz";
+    }
+        public IActionResult Login(Login login) {
+            ConnectionString();
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText ="select * from Accounts where username='" + login.Username + "' and passwort='" + login.Passwort + "'";
+            
+            dr = cmd.ExecuteReader();
+
+            if (dr.Read()) {
+              
+                conn.Close();
+                return View("LoginSuccesfull");
+            } else {
+                conn.Close();
+                return View("LoginNotSuccesfull");
+            }
+           
+                    
+
         }
 
 
