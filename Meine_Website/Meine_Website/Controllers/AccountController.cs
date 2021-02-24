@@ -8,6 +8,7 @@ using Meine_Website.Models.db;
 using System.Data.Common;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Microsoft.AspNetCore.Http;
 
 namespace Meine_Website.Controllers {
     public class AccountController : Controller {
@@ -128,6 +129,7 @@ namespace Meine_Website.Controllers {
 
         //Login
         [HttpGet]
+     
         public IActionResult Login() {
             return View(new Login());
         }
@@ -145,9 +147,12 @@ namespace Meine_Website.Controllers {
             dr = cmd.ExecuteReader();
 
             if (dr.Read()) {
-              
+                HttpContext.Session.SetString("username",login.Username);
+
                 conn.Close();
                 return View("LoginSuccesfull");
+                
+
             } else {
                 conn.Close();
                 return View("LoginNotSuccesfull");
@@ -155,6 +160,12 @@ namespace Meine_Website.Controllers {
            
                     
 
+        }
+        //Logout
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction("index", "home");
         }
 
 
