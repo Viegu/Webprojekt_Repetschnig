@@ -83,7 +83,7 @@ namespace Meine_Website.Models.db {
 
           
 
-            cmdInsert.CommandText = "insert into accounts values(null, @vorname, @nachname, @username, @email, @passwort, @geburtsdatum, @istModerator);";
+            cmdInsert.CommandText = "insert into accounts values(null, @vorname, @nachname, @username, @email, sha2(@passwort,512), @geburtsdatum, @istModerator);";
 
            
             DbParameter paramVorname = cmdInsert.CreateParameter();

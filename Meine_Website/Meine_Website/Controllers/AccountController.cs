@@ -143,7 +143,7 @@ namespace Meine_Website.Controllers {
             ConnectionString();
             conn.Open();
             cmd.Connection = conn;
-            cmd.CommandText ="select * from Accounts where username='" + login.Username + "' and passwort='" + login.Passwort + "'";
+            cmd.CommandText ="select * from Accounts where username='" + login.Username + "' and passwort=sha2('" + login.Passwort + "',512)";
             
             dr = cmd.ExecuteReader();
 

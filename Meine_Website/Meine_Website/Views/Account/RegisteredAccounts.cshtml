@@ -6,24 +6,40 @@
 @if ((Model == null || Model.Count == 0)) {
     <p> Es wurden noch keine Accounts registriert </p>
 } else {
+<style>
+    table{
+        font-family: Arial, sans-serif;
+        border-collapse:collapse;
+        width: 100%;
+    }
 
+    td,th{
+        border: 1px solid #dddddd;
+        text-align:left;
+        padding: 8px;
+    }
+    tr:nth-child(even){
+        background-color: #dddddd;
+    }
+
+
+
+
+
+</style>
 <table>
-    <thead>
+    
+   
+    
         <tr>
-            <td>registrierte Accounts</td>
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr>
-            <td>Account-ID</td>
-            <td>Username</td>
-            <td>Vorname</td>
-            <td>Nachname</td>
-            <td>Email</td>
-            <td>Passwort</td>
-            <td>Geburtsdatum</td>
-            <td>Ist Moderator</td>
+            <th>Account-ID</th>
+            <th>Username</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Email</th>
+            <th>Passwort</th>
+            <th>Geburtsdatum</th>
+            <th>Ist Moderator</th>
         </tr>
         @foreach(Account a in Model) {
     <tr>
@@ -32,7 +48,7 @@
         <td>@a.Vorname</td>
         <td>@a.Nachname</td>
         <td>@a.Email</td>
-        <td>@a.Passwort</td>
+        <td>*****************************</td>
         <td>@a.Geburtsdatum.Value.ToShortDateString()</td>
         <td>@a.istModerator.ToString()</td>
 
@@ -40,7 +56,7 @@
     </tr>
         }
 
-    </tbody>
+   
 </table>
 
 }
