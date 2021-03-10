@@ -139,6 +139,7 @@ namespace Meine_Website.Controllers {
               conn.ConnectionString = "server=localhost;database=db_accounts;user=root;pwd=ABC13Y@12Bz";
     }
         public IActionResult Login(Login login) {
+            bool suc;
             ConnectionString();
             conn.Open();
             cmd.Connection = conn;
@@ -147,13 +148,34 @@ namespace Meine_Website.Controllers {
             dr = cmd.ExecuteReader();
 
             if (dr.Read()) {
-                HttpContext.Session.SetString("username",login.Username);
-
-                conn.Close();
-                return View("LoginSuccesfull");
+                suc = true;
+               
                 
 
             } else {
+                suc = false;
+              
+            }
+            conn.Close();
+            conn.Open();
+            cmd.Connection = conn;
+            if(suc == true)
+            {
+                cmd.CommandText = "select * from Accounts where username='" + login.Username + "' and istModerator=true";
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    HttpContext.Session.SetInt32("mod", 1);
+                }
+             
+                HttpContext.Session.SetString("username", login.Username);
+
+
+                conn.Close();
+                return View("LoginSuccesfull");
+            }
+            else
+            {
                 conn.Close();
                 return View("LoginNotSuccesfull");
             }
@@ -165,6 +187,7 @@ namespace Meine_Website.Controllers {
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
+            HttpContext.Session.Remove("mod");
             return RedirectToAction("index", "home");
         }
 
