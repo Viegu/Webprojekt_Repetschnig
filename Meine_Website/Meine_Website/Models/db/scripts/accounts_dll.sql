@@ -1,4 +1,4 @@
-create database db_accounts collate utf8mb4_general_ci;
+ create database db_accounts collate utf8mb4_general_ci;
 
 use db_accounts;
 
