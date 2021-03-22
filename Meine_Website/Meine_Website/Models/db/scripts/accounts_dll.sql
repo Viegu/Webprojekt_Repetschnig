@@ -15,7 +15,7 @@ create table accounts(
 )engine=InnoDb;
 
 
-insert into accounts values(null,'Manuel','Repetschnig','admin','repetschnigmanuel@gmail.com',(sha2('admin',501)),null,'1');
+insert into accounts values(null,'Manuel','Repetschnig','admin','repetschnigmanuel@gmail.com',(sha2('admin',512)),null,'1');
 select * from accounts;
 drop table accounts;
 
