@@ -169,6 +169,7 @@ namespace Meine_Website.Controllers {
                 }
              
                 HttpContext.Session.SetString("username", login.Username);
+                
 
 
                 conn.Close();
@@ -191,7 +192,10 @@ namespace Meine_Website.Controllers {
             return RedirectToAction("index", "home");
         }
 
-
+        public IActionResult Accountverwaltung()
+        {
+            return View();
+        }
 
     }
 }
