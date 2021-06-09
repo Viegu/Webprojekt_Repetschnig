@@ -17,7 +17,7 @@ namespace Meine_Website.Models
         bool Insert(Article art);
 
         List<Article> getAllArticlesFromGenre(Genre genre);
-        void Delete();
+        bool Delete(int articleID);
 
 
 

@@ -159,12 +159,62 @@ namespace Meine_Website.Models
 
         public bool Insert(Article art)
         {
-            throw new NotImplementedException();
+            if(art == null) {
+                return false;
+            }
+            if (this._conn.State != ConnectionState.Open) {
+                return false;
+            }
+
+            DbCommand cmd = this._conn.CreateCommand();
+            cmd.CommandText = "insert into articles values(null, @name, @price, @description, @genre, @username);";
+
+            DbParameter paramArticlename = cmd.CreateParameter();
+            paramArticlename.ParameterName = "name";
+            paramArticlename.DbType = DbType.String;
+            paramArticlename.Value = art.ArticleName;
+
+            DbParameter paramPrice = cmd.CreateParameter();
+            paramPrice.ParameterName = "price";
+            paramPrice.DbType = DbType.Decimal;
+            paramPrice.Value = art.Price;
+
+            DbParameter paramDesc = cmd.CreateParameter();
+            paramDesc.ParameterName = "description";
+            paramDesc.DbType = DbType.String;
+            paramDesc.Value = art.Description;
+
+            DbParameter paramGenre = cmd.CreateParameter();
+            paramGenre.ParameterName = "genre";
+            paramGenre.DbType = DbType.Int32;
+            paramGenre.Value = art.Genre;
+
+            DbParameter paramUsername = cmd.CreateParameter();
+            paramUsername.ParameterName = "username";
+            paramUsername.DbType = DbType.String;
+            paramUsername.Value = art.username;
+
+
+            cmd.Parameters.Add(paramArticlename);
+            cmd.Parameters.Add(paramPrice);
+            cmd.Parameters.Add(paramDesc);
+            cmd.Parameters.Add(paramGenre);
+            cmd.Parameters.Add(paramUsername);
+
+
+            return cmd.ExecuteNonQuery() == 1;
+
         }
 
-        public void Delete()
+        public bool Delete(int ArticleID)
         {
-            throw new NotImplementedException();
+            if(this._conn.State == ConnectionState.Open) {
+                DbCommand cmdDelete = this._conn.CreateCommand();
+                cmdDelete.CommandText = "delete * from articles where article_id = "+ArticleID;
+                return cmdDelete.ExecuteNonQuery() == 1;
+            
+            }
+            throw new Exception("Datenbankfehler (Delete Methode)");
         }
         //delete-> Benutzer kann eigene Uploads löschen
         //Suchen nach Artikeln mittels Ajax (Nach Genres)
