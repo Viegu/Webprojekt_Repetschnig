@@ -1,7 +1,27 @@
-﻿
+﻿@using Meine_Website.Models
+@model List<Article>
 @{
     ViewData["Title"] = "Index";
 }
 
+
+
+
 <h1>Index</h1>
+
+@if(Model == null || Model.Count == 0) {
+    <p>*Grillenzirpen*</p>
+} else {
+    @foreach(Article a in Model) {
+        <div class="grids">
+            <h1> @a.ArticleName</h1>
+            <p>@a.Description</p>
+                     <h5>@a.Price €</h5>
+                                      <p>@a.username</p> 
+        </div>
+    }
+
+}
+
+<link href="~/css/GridsShop.css" rel="stylesheet" type="text/css" />
 

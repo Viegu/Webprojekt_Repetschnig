@@ -1,7 +1,7 @@
 create database db_shop collate utf8mb4_general_ci;
 
 use db_shop;
-drop table articles;
+
 create table articles(
 	article_id int unsigned not null auto_increment,
     name varchar(200) not null,

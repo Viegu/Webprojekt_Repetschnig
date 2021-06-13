@@ -197,5 +197,21 @@ namespace Meine_Website.Controllers {
             return View();
         }
 
+        public IActionResult DeleteAcc(int userId) {
+            try {
+                rep.Open();
+                
+                if (rep.Delete(userId)) {
+                    return View("Message", new Message("Datenbank", "Der Benutzer wurde enfernt"));
+                } else {
+                    return View("Message", new Message("Datenbank", "Fehler bei versuch, einen Benutzer zu löschen!"));
+                }
+            }catch(Exception e) {
+                return View("Message", new Message("Datenbakfehler", e.Message));
+            } finally {
+                rep.Close();
+            }
+        }
+
     }
 }

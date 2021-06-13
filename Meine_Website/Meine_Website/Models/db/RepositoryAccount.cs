@@ -22,9 +22,24 @@ namespace Meine_Website.Models.db {
         public bool Delete(int Account_ID) {
             if (this._conn.State == ConnectionState.Open) {
                 DbCommand cmdDelete = this._conn.CreateCommand();
-                cmdDelete.CommandText = "delete from accounts where account_id = " + Account_ID;
+                cmdDelete.CommandText = "delete from accounts where account_id=" + Account_ID;
 
-                return cmdDelete.ExecuteNonQuery() == 1;
+                return cmdDelete.ExecuteNonQuery() == 1;  
+
+                //geht nit lool
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+
             }
             throw new Exception("Verbindung zur DB ist nicht geöffnet!");
         }
@@ -134,7 +149,7 @@ namespace Meine_Website.Models.db {
             cmdInsert.Parameters.Add(paramIstModerator);
 
             // nun muss der INSERT-Befehl an den DB-Server gesendet werden
-            // ExecuteNonQuery() wird für insert, update, delete, ... verwendet
+            // ExecuteNonQuery() wird für insert, update, , ... verwendet
             // ExecuteReader() wird bei select verwendet
             return cmdInsert.ExecuteNonQuery() == 1;
             /*

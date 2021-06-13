@@ -1,0 +1,45 @@
+﻿@model Meine_Website.Models.Article;
+
+@{
+    ViewData["Title"] = "CreateNewArticle";
+}
+<form asp-controller="shop" asp-action="CreateNewArticle" method="post" onsubmit="return validation()">
+
+    <label asp-for="ArticleName">Artikelname*</label><br />
+    <input asp-for="ArticleName" type="text" id="articlename"/> <br />
+    <span asp-validation-for="ArticleName" class="text-danger" style="font-size: 85%" id="nameError"></span> <br />
+
+
+    <label asp-for="Price">Artikelpreis*</label><br />
+    <input asp-for="Price" type="text" id="price"/> <br />
+    <span asp-validation-for="Price" class="text-danger" style="font-size: 85%"id="priceError"></span> <br />
+
+    <label asp-for="Description">Beschreibung*</label><br />
+    <textarea asp-for="Description" rows="10" cols="40" type="text" id="description"></textarea><br />
+    <span asp-validation-for="Description" class="text-danger" style="font-size: 85%"id="descError"></span> <br />
+
+
+    <label asp-for="Genre">Genre*</label><br />
+                                         <select asp-for="Genre">
+                                             <option value="SomethingElse">bitte auswählen</option>
+                                             <option value="Music">Music</option>
+                                             <option value="Design">Design</option>
+                                             <option value="Gaming">Gaming</option>
+                                             <option value="Coding">Coding</option>
+                                             <option value="Creativity">Creativity</option>
+                                             <option value="VoiceActing">VoiceActing</option>
+                                             <option value="Fitness">Fitness</option>
+                                          
+
+                                         </select>
+
+    <input type="submit" value="Artikel erzeugen" />
+    <input type="reset" value="abbrechen" />
+
+    
+</form>
+
+
+
+
+<script src="~/js/Validation.js"></script>

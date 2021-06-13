@@ -1,4 +1,5 @@
-﻿using MySqlConnector;
+﻿using Microsoft.AspNetCore.Http;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -192,7 +193,7 @@ namespace Meine_Website.Models
             DbParameter paramUsername = cmd.CreateParameter();
             paramUsername.ParameterName = "username";
             paramUsername.DbType = DbType.String;
-            paramUsername.Value = art.username;
+            paramUsername.Value = HttpContext.Session.SetString("username", "hi");
 
 
             cmd.Parameters.Add(paramArticlename);
