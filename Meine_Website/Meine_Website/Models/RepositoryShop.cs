@@ -4,13 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Meine_Website.Models
-{
+namespace Meine_Website.Models {
     public class RepositoryShop : IRepositoryShop
     {
+       
+        
         private String _connectionString = "server=localhost;database=db_shop;uid=root;pwd=ABC13Y@12Bz";
         private MySqlConnection _conn = null;
 
@@ -189,11 +188,12 @@ namespace Meine_Website.Models
             paramGenre.ParameterName = "genre";
             paramGenre.DbType = DbType.Int32;
             paramGenre.Value = art.Genre;
-
+           
             DbParameter paramUsername = cmd.CreateParameter();
             paramUsername.ParameterName = "username";
             paramUsername.DbType = DbType.String;
-            paramUsername.Value = HttpContext.Session.SetString("username", "hi");
+            paramUsername.Value = "admin";
+            
 
 
             cmd.Parameters.Add(paramArticlename);
@@ -211,7 +211,7 @@ namespace Meine_Website.Models
         {
             if(this._conn.State == ConnectionState.Open) {
                 DbCommand cmdDelete = this._conn.CreateCommand();
-                cmdDelete.CommandText = "delete * from articles where article_id = "+ArticleID;
+                cmdDelete.CommandText = "delete from articles where article_id = "+ArticleID;
                 return cmdDelete.ExecuteNonQuery() == 1;
             
             }

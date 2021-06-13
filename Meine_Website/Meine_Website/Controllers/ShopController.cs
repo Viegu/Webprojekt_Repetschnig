@@ -63,8 +63,25 @@ namespace Meine_Website.Controllers
             if(a== null) {
                 return;
             }
-            if
+            
         }
+
+        public IActionResult Delete(int id) {
+            try {
+                rep.Open();
+
+                if (rep.Delete(id)) {
+                    return View("Message", new Message("Datebank", "Der Artikel wurde gelöscht!"));
+                } else {
+                    return View("Message", new Message("Datebank", "Der Artikel konnte nicht gelöscht werden!"));
+                }
+            } catch (Exception ex) {
+                return View("Message", new Message("Datenbankfehler", ex.Message));
+            } finally {
+                rep.Close();
+            }
+        }
+
 
 
     }

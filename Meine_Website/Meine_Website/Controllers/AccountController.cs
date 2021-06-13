@@ -11,7 +11,10 @@ using MySql.Data.MySqlClient;
 using Microsoft.AspNetCore.Http;
 
 namespace Meine_Website.Controllers {
+   
     public class AccountController : Controller {
+        public String usernameofSession = null;
+        //MySession mySession;
         MySqlConnection conn = new MySqlConnection();
         MySqlCommand cmd = new MySqlCommand();
         MySqlDataReader dr;
@@ -163,12 +166,14 @@ namespace Meine_Website.Controllers {
             {
                 cmd.CommandText = "select * from Accounts where username='" + login.Username + "' and istModerator=true";
                 dr = cmd.ExecuteReader();
+              
                 if (dr.Read())
                 {
                     HttpContext.Session.SetInt32("mod", 1);
                 }
              
                 HttpContext.Session.SetString("username", login.Username);
+                usernameofSession = login.Username;
                 
 
 
@@ -189,7 +194,9 @@ namespace Meine_Website.Controllers {
         {
             HttpContext.Session.Remove("username");
             HttpContext.Session.Remove("mod");
+            usernameofSession = null;
             return RedirectToAction("index", "home");
+           
         }
 
         public IActionResult Accountverwaltung()
@@ -197,7 +204,7 @@ namespace Meine_Website.Controllers {
             return View();
         }
 
-        public IActionResult DeleteAcc(int userId) {
+        public IActionResult Delete(int userId) {
             try {
                 rep.Open();
                 

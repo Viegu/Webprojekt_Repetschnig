@@ -22,7 +22,7 @@ namespace Meine_Website.Models.db {
         public bool Delete(int Account_ID) {
             if (this._conn.State == ConnectionState.Open) {
                 DbCommand cmdDelete = this._conn.CreateCommand();
-                cmdDelete.CommandText = "delete from accounts where account_id=" + Account_ID;
+                cmdDelete.CommandText = "delete from accounts where account_id = " + Account_ID;
 
                 return cmdDelete.ExecuteNonQuery() == 1;  
 
