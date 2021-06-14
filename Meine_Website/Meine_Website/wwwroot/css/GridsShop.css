@@ -10,6 +10,12 @@
     outline: 8px solid black;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
+    position: relative;
 
 
+}
+.username {
+    position: absolute;
+    right:0;
+    
 }

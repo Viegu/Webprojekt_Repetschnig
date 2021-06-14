@@ -9,6 +9,7 @@ namespace Meine_Website.Models {
     public class RepositoryShop : IRepositoryShop
     {
        
+       
         
         private String _connectionString = "server=localhost;database=db_shop;uid=root;pwd=ABC13Y@12Bz";
         private MySqlConnection _conn = null;

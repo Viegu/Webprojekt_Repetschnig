@@ -204,11 +204,11 @@ namespace Meine_Website.Controllers {
             return View();
         }
 
-        public IActionResult Delete(int userId) {
+        public IActionResult Delete(int AccountID) { //WTF WAS ZUM FICK I HASS MEI LEBEN
             try {
                 rep.Open();
                 
-                if (rep.Delete(userId)) {
+                if (rep.Delete(AccountID)) {
                     return View("Message", new Message("Datenbank", "Der Benutzer wurde enfernt"));
                 } else {
                     return View("Message", new Message("Datenbank", "Fehler bei versuch, einen Benutzer zu löschen!"));

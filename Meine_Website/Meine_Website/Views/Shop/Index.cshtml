@@ -1,14 +1,10 @@
 ﻿@using Meine_Website.Models
-@using Microsoft.AspNetCore.Http
 @model List<Article>
 @{
     ViewData["Title"] = "Index";
 }
 
 
-
-
-<h1>Index</h1>
 
 @if (Model == null || Model.Count == 0) {
     <p>*Grillenzirpen*</p>
@@ -18,7 +14,7 @@
     <h1> @a.ArticleName</h1>
     <p>@a.Description</p>
     <h5>@a.Price €</h5>
-    <p>@a.username</p>
+    <p class ="username">@a.username</p>
 
     @* @if (HttpContext.Session.GetString("username" == a.username) || HttpContext.Session.GetString("username" == "admin")) {*@
 

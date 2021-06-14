@@ -42,21 +42,24 @@
             <th>Ist Moderator</th>
         </tr>
         @foreach(Account a in Model) {
-    <tr>
-        <td>@a.AccountID</td>
-        <td>@a.Username</td>
-        <td>@a.Vorname</td>
-        <td>@a.Nachname</td>
-        <td>@a.Email</td>
-        <td>*****************************</td>
-        <td>@a.Geburtsdatum.Value.ToShortDateString()</td>
-        <td>@a.istModerator.ToString()</td>
-        <td><form action="/account/delete/@a.AccountID" method="post">    
+<tr>
+    <td>@a.AccountID</td>
+    <td>@a.Username</td>
+    <td>@a.Vorname</td>
+    <td>@a.Nachname</td>
+    <td>@a.Email</td>
+    <td>*****************************</td>
+    <td>@a.Geburtsdatum.Value.ToShortDateString()</td>
+    <td>@a.istModerator.ToString()</td>
+    <td>
+        <form asp-controller="account" asp-route-AccountID="@a.AccountID" asp-action="Delete" method="post">
+            <input type="hidden" value="@a.AccountID" />
             <input type="submit" value="löschen" />
-            </form></td>
+        </form>
+    </td>
 
 
-    </tr>
+</tr>
         }
 
    
