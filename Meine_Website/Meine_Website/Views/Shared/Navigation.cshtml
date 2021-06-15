@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Http
 <div class="topnav">
     <a asp-controller="home" asp-action="Index" style="text-decoration:none;">Home</a>
-    <a asp-controller="home" asp-action="WhatIsBAFR" style="text-decoration:none;">What is "Be a Freelancer"?</a>
+
+
     @if (Context.Session.GetString("username") == null) {
+        <a asp-controller="home" asp-action="WhatIsBAFR" style="text-decoration:none;">What is "Be a Freelancer"?</a>
         <a asp-controller="account" asp-action="Register" style="text-decoration:none;">Registrieren</a>
     }
     @if (Context.Session.GetInt32("mod") == 1) {
@@ -11,10 +13,16 @@
     @if (Context.Session.GetString("username") == null) {
         <a asp-controller="account" asp-action="Login" style="text-decoration:none;">Login</a>
     } else {
+        <a asp-controller="shop" asp-action="Index" style="text-decoration:none;">Shop</a>
         <a asp-controller="shop" asp-action="CreateNewArticle" style="text-decoration:none;">Artikel hochladen</a>
-        <a asp-controller="account" asp-action="Accountverwaltung" style="text-decoration:none;">Account verwalten</a>
-        <a asp-controller="account" asp-action="Logout" style="text-decoration:none;">Logout</a>
+        <h3 style="float:right; color:white;padding-right:10px;margin-top:7px;">@Context.Session.GetString("username")</h3>
+        <a asp-controller="account" asp-action="Logout" style="text-decoration:none; float:right;">Logout</a>
+        <a asp-controller="account" asp-action="Accountverwaltung" style="text-decoration:none;float:right;">Account verwalten</a>
+
+
     }
+
+
 
 </div>
 

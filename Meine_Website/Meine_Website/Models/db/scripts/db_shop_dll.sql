@@ -25,7 +25,7 @@ I love desiging websites with js and css and thats why I sell my knowledge on th
   insert into articles values(null, "Give me money, Im poor", 1, "Thanks for your support", 7,"HomelessGuy");
   insert into articles values(null, "Draw Cartoon-Characters", 20, "I'll draw Cartoon-characters for 20€", 4,"Donald_The_Creative_Duck");
   insert into articles values(null, "Fitness-Plan", 100, "I'll make your personal Fitness-Plan with Workouts to do and food recommendations", 6,"Sascha_H");
-
+select * from articles where username = admin;
 
 
 

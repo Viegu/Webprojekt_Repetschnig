@@ -145,15 +145,48 @@ content{
         filter: blur(0);
         opacity: 1
     }
+
+
 }
 
+.Background-Grid {
+    width: 40vh;
+    height: auto;
+    background-color: rgba(128, 128, 128, 0.83);
+    outline: 1px solid #333;
+    display: grid;
+    grid-template-columns: auto;
+    position: relative;
+    top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
 
-
-
-
-
-
+.gridWIBAFR {
+    width: 80vh;
+    height: auto;
+    background-color: rgba(128, 128, 128, 0.83);
+    outline: 1px solid #333;
+    display: grid;
+    grid-template-columns: auto;
+    position: relative;
+    top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
 
 
 

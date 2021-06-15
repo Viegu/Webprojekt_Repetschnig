@@ -158,7 +158,7 @@ namespace Meine_Website.Models {
             throw new Exception("Datenbank: Verbindung ist nicht geöffnet!");
         }
 
-        public bool Insert(Article art)
+        public bool Insert(Article art, string username)
         {
             if(art == null) {
                 return false;
@@ -193,7 +193,7 @@ namespace Meine_Website.Models {
             DbParameter paramUsername = cmd.CreateParameter();
             paramUsername.ParameterName = "username";
             paramUsername.DbType = DbType.String;
-            paramUsername.Value = "admin";
+            paramUsername.Value = username;
             
 
 
@@ -221,5 +221,47 @@ namespace Meine_Website.Models {
         //delete-> Benutzer kann eigene Uploads löschen
         //Suchen nach Artikeln mittels Ajax (Nach Genres)
 
+        public List<Article> getAllArticlesFromUser(string username) {
+            if (this._conn.State == ConnectionState.Open) {
+                List<Article> articles = new List<Article>();
+
+             
+                DbCommand cmdSelect = this._conn.CreateCommand();
+                cmdSelect.CommandText = "select * from articles where username = \""+ username+"\"";
+
+                using (DbDataReader reader = cmdSelect.ExecuteReader()) {
+
+                    // Read() liest den nächsten Record ein
+                    while (reader.Read()) {
+
+                        articles.Add(new Article {
+                          
+                            ArticleID = Convert.ToInt32(reader["article_id"]),
+                            ArticleName = Convert.ToString(reader["name"]),
+                            Price = Convert.ToDecimal(reader["price"]),
+                            Description = Convert.ToString(reader["description"]),
+                            Genre = (Genre)Convert.ToInt32(reader["genre"]),
+                            username = Convert.ToString(reader["username"]),
+                        });
+
+                    }
+
+                }   
+
+
+
+                if (articles.Count == 0) {
+                    return null;
+                }
+                return articles;
+
+            }
+
+            throw new Exception("Datenbank: Verbindung ist nicht geöffnet!");
+
+
+        }
+
+        
     }
 }

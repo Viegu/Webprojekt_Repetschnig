@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace Meine_Website.Models
 {
-    interface IRepositoryShop
-    {
+    interface IRepositoryShop {
 
         void Open();
         void Close();
@@ -14,13 +13,14 @@ namespace Meine_Website.Models
         Article GetarticleByID(int articleID);
 
         List<Article> GetArticles();
-        bool Insert(Article art);
+        bool Insert(Article art, string username);
 
         List<Article> getAllArticlesFromGenre(Genre genre);
         bool Delete(int articleID);
+        List<Article> getAllArticlesFromUser(string username);
 
 
 
-        
+
     }
 }

@@ -1,32 +1,55 @@
-﻿@using Meine_Website.Models
+﻿@using Microsoft.AspNetCore.Http;
+@using Meine_Website.Models
+
 @model List<Article>
+
 @{
     ViewData["Title"] = "Index";
 }
 
+<link href="~/css/GridsShop.css" rel="stylesheet" type="text/css" />
+
+<button id="b1">Show own Articles/All</button>
+<div id="Richtig" style="display:none;">
+    <h3 style="text-align:center">Deine Artikel/Dienstleistungen</h3>
+    <div id="Fehler">
 
 
-@if (Model == null || Model.Count == 0) {
-    <p>*Grillenzirpen*</p>
-} else {
-    @foreach (Article a in Model) {
-<div class="grids">
-    <h1> @a.ArticleName</h1>
-    <p>@a.Description</p>
-    <h5>@a.Price €</h5>
-    <p class ="username">@a.username</p>
+    </div>
 
-    @* @if (HttpContext.Session.GetString("username" == a.username) || HttpContext.Session.GetString("username" == "admin")) {*@
 
-    <form action="/shop/delete/@a.ArticleID" method="post">
-        <input type="submit" value="löschen" />
-    </form>
-
-    @*}*@
 </div>
+
+<div id="alle">
+    <h3 style="text-align:center">Alle Artikel/Dienstleistungen</h3>
+    @if (Model == null || Model.Count == 0) {
+        <p>*Grillenzirpen*</p>
+    } else {
+
+        @foreach (Article a in Model) {
+            <div class="grids">
+                <h1> @a.ArticleName</h1>
+                <p>@a.Description</p>
+                <h5>@a.Price €</h5>
+                <p class="username">@a.username</p>
+
+                @if (Context.Session.GetString("username") == a.username || Context.Session.GetString("username") == "admin") {
+
+                    <form action="/shop/delete/@a.ArticleID" method="post">
+                        <input type="submit" value="löschen" />
+                    </form>
+
+                }
+            </div>
+        }
+
+
+    }
+</div>
+
+
+    @section Scripts{
+        <script src="~/js/usernameArticles.js"></script>
     }
 
-}
-
-<link href="~/css/GridsShop.css" rel="stylesheet" type="text/css" />
 

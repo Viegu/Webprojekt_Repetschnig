@@ -204,7 +204,7 @@ namespace Meine_Website.Controllers {
             return View();
         }
 
-        public IActionResult Delete(int AccountID) { //WTF WAS ZUM FICK I HASS MEI LEBEN
+        public IActionResult Delete(int AccountID) { //WTF WAS ZUM F1@K I HASS MEI LEBEN
             try {
                 rep.Open();
                 

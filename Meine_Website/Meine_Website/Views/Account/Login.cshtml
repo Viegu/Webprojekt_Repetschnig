@@ -2,22 +2,25 @@
 @{
     ViewData["Title"] = "Login";
 }
+<section class="banner">
+
+    <div class="Background-Grid">
+
+        <form asp-controller="account" asp-action="Login" method="post">
+
+            <label asp-for="Username"> Username </label> <br />
+            <input asp-for="Username" /><br />
+            <span asp-validation-for="Username" class="text-danger" style="font-size: 85%"></span> <br />
+
+            <label asp-for="Passwort"> Passwort </label> <br />
+            <input type="password" asp-for="Passwort" /><br />
+            <span asp-validation-for="Passwort" class="text-danger" style="font-size: 85%"></span> <br />
 
 
-<form asp-controller="account" asp-action="Login" method="post">
-
-    <label asp-for="Username"> Username </label> <br />
-    <input asp-for="Username" /><br />
-    <span asp-validation-for="Username" class="text-danger" style="font-size: 85%"></span> <br />
-
-    <label asp-for="Passwort"> Passwort </label> <br />
-    <input type = "password" asp-for="Passwort" /><br />
-    <span asp-validation-for="Passwort" class="text-danger" style="font-size: 85%"></span> <br />
-
-
-    <input type="submit" value="Login" />
-</form>
-
+            <input type="submit" value="Login" />
+        </form>
+    </div>
+</section>
 
 
 

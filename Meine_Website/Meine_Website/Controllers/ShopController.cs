@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Meine_Website.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Meine_Website.Controllers
 {
@@ -21,8 +22,9 @@ namespace Meine_Website.Controllers
                 return View("Message", new Message("Fehler", e.Message));
             } finally {
                 rep.Close();
+
             }
-            return View();
+            
         }
 
         [HttpGet]
@@ -42,7 +44,7 @@ namespace Meine_Website.Controllers
                 try {
                     rep.Open();
 
-                    if (rep.Insert(newArt)) {
+                    if (rep.Insert(newArt, HttpContext.Session.GetString("username"))) {
                         return View("Message", new Message("Glückwunsch", "Ihr Artikel/Dienstleistung wurde erfolgreich hochgeladen"));
                     }
                 }catch(System.Data.Common.DbException) {
@@ -82,7 +84,26 @@ namespace Meine_Website.Controllers
             }
         }
 
+        public JsonResult UsernameArticles() {
+            try {
+                rep.Open();
+                string username = HttpContext.Session.GetString("username");
+                List <Article> art = rep.getAllArticlesFromUser(username);
+              if(art!= null) {
+                    return Json(art);
+                } else {
+                    return Json("Fehler!");
+                }
+            } catch (Exception e) {
+                return Json("DBFehler!");
+            } finally {
+                rep.Close();
+
+            }
+        }
 
 
+        
     }
+ 
 }
